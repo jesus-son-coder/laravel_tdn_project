@@ -11,6 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+/* ************************* URL-SHORTENER ******************* */
+
+Route::get('/tdn/url-shortener', function () {
+
+    return view('url-shortener/index');
+
 });
