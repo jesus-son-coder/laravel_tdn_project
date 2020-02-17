@@ -67,3 +67,11 @@ html, body {
   input[type="text"]#input-url {
     width: 80%;
   }
+
+  input[type="submit"]#input-url-submit {
+    margin-top: 15px;
+  }
+
+  span.url-result {
+      font-size: 24px;
+  }

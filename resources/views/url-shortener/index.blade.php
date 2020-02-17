@@ -7,13 +7,14 @@
             <h1>URL Shortener Application</h1>
         </div>
         <div class="col-12">
-            <form action="/" method="POST">
+            <form action="" method="POST">
                 {{  csrf_field() }}
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{-- Ou bien la méthode ci-dessous : --}}
+                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
 
-                <input id="input-url" type="text" placeholder="Enter your original URL here...">
+                <input id="input-url" name="url" type="text" placeholder="Enter your original URL here...">
                 <br>
-                <input type="submit" value="Shorten URL">
+                <input id="input-url-submit" type="submit" value="Shorten URL">
             </form>
         </div>
     </div>
