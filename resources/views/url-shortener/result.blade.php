@@ -7,12 +7,7 @@
             <h1>URL Shortener Application</h1>
         </div>
         <div class="col-12">
-            {{-- Méthode #1 : en utilisant le helper "env" :--}}
-            <span class="url-result"><a href="{{ env('APP_URL') }}/{{ $shortened }}">
-                {{ env('APP_URL') }}/{{ $shortened }}
-            </a></span>
-            <br><br>
-            {{-- Méthode #2  en utilisant le helper "config" --}}
+            <p class="url-title-level-3">Find your Shortened Url below :</p>
             <span class="url-result"><a href="{{ config('app.url') }}/tdn/url-shortener/{{ $shortened }}">
                 {{ config('app.url') }}/tdn/url-shortener/{{ $shortened }}
             </a></span>

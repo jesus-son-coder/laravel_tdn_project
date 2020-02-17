@@ -75,6 +75,17 @@ Route::post('/tdn/url-shortener', function () {
         return view('url-shortener/result')->with('shortened', $url->shortened);
     }
 
+
+
+    $row = Url::create([
+        'url' => request('url'),
+        'shortened' => Url::get_unique_shortened_url()
+    ]);
+
+    if($row) {
+        return view('url-shortener/result')->with('shortened', $row->shortened);
+    }
+
     return view('url-shortener/index');
 
 });
