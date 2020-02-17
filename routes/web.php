@@ -25,3 +25,10 @@ Route::get('/tdn/url-shortener', function () {
     return view('url-shortener/index');
 
 });
+
+Route::post('/tdn/url-shortener', function () {
+
+    return view('url-shortener/index');
+
+});
+
