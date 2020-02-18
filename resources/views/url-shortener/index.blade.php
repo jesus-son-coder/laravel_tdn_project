@@ -12,10 +12,10 @@
                 {{-- Ou bien la méthode ci-dessous : --}}
                 {{--<input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
 
-                <input id="input-url" name="url" type="text" placeholder="Enter your original URL here..." value="{{ old('url') }}">
+                <input id="input-url" name="url" type="text" placeholder="Please, enter your original URL here..." value="{{ old('url') }}">
                 {!! $errors->first('url','<p class="error-msg">:message</p>') !!}
                 <br>
-                <input id="input-url-submit" type="submit" value="Shorten URL">
+                {{-- <input id="input-url-submit" type="submit" value="Shorten URL"> --}}
             </form>
         </div>
     </div>

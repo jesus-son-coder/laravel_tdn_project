@@ -79,8 +79,11 @@ Route::post('/tdn/url-shortener', function () {
     /* Les différentes règles de validation disponibles de la façade "Validator"
         se trouvent dans la documentation suivante :
         https://laravel.com/docs/5.8/validation#available-validation-rules */
-    $validation = Validator::make($data, ['url' => 'required | url'])->validate();
 
+        $validation = Validator::make(
+                        $data,
+                        ['url' => 'required | url']
+                    )->validate();
 
 
     // 2- Vérifier si l'url a déjà été raccourcie et la retourner si tel est le cas
