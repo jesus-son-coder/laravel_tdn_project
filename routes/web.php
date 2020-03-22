@@ -120,3 +120,7 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
