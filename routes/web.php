@@ -124,3 +124,4 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/export', 'HomeController@export')->name('export');
