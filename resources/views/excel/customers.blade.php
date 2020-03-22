@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Customers</div>
 
-                <a href="{{ route('export') }}" class="btn btn-primary">Export to Excel</a>
+                <a href="{{ route('export') }}" class="btn btn-primary btn-export-excel">Export to Excel</a>
                 <br>
 
                 <div class="card-body">

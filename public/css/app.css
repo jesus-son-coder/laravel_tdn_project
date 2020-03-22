@@ -10884,3 +10884,8 @@ a.text-dark:focus {
   }
 }
 
+.btn-export-excel {
+  width: 30%;
+  margin: 5px;
+}
+
