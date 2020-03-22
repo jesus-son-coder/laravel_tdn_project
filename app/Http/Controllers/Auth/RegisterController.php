@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserHasRegisteredEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -57,6 +58,7 @@ class RegisterController extends Controller
     }
 
     /**
+     * 
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -64,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        event(new UserHasRegisteredEvent($user));
+
+        return $user;
     }
 }
