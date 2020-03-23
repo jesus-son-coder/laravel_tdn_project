@@ -125,3 +125,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/export', 'HomeController@export')->name('export');
+Route::post('/import', 'HomeController@export')->name('import');

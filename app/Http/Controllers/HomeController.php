@@ -43,4 +43,15 @@ class HomeController extends Controller
         return Excel::download(new UsersExport(), 'users.xlsx');
     }
 
+    /**
+     * Export the list of Users.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function import()
+    {
+        return Excel::download(new UsersExport(), 'users.xlsx');
+    }
+
+
 }

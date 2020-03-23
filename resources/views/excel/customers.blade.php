@@ -7,11 +7,28 @@
             <div class="card">
                 <div class="card-header">Customers</div>
 
-                <a href="{{ route('export') }}" class="btn btn-primary btn-export-excel">Export to Excel</a>
-                <br>
-
                 <div class="card-body">
 
+                    <a href="{{ route('export') }}" class="btn btn-primary btn-export-excel">Export to Excel</a>
+                    <br>
+                    <hr>
+
+                    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="input-group input-group-excel">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="import_file" class="custom-file-input"  id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label
+                                btn-import-excelbtn-import-excel" for="inputGroupFile01">Choisir un fichier</label>
+                            </div>
+                        </div>
+                        <input type="submit" value="Import from Excel" class="btn btn-primary btn-import-excel">
+                    </form>
+
+                    <hr>
                     <table class="table">
                         <thead>
                             <tr>

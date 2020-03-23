@@ -10884,8 +10884,13 @@ a.text-dark:focus {
   }
 }
 
-.btn-export-excel {
+.btn-export-excel,
+.btn-import-excel {
   width: 30%;
   margin: 5px;
+}
+
+.input-group-excel {
+  margin-left: 5px;
 }
 
