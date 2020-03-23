@@ -44,7 +44,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Export the list of Users.
+     * Import Users from Excel File.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
