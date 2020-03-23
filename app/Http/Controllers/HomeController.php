@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -55,7 +56,12 @@ class HomeController extends Controller
         //Excel::import(new UsersImport(), $request->file('import_file'));
 
         /* Mais pour éviter les cas de Duplicate entry si certains champs sont Uniques (comme les emails), il faut re-traiter les données importées par le fichier Excel avant de les enregistrer en base de données : */
-        $users = Excel::toCollection(new UsersImport(), $request->file('import_file'));
+        try {
+            $users = Excel::toCollection(new UsersImport(), $request->file('import_file'));
+        } catch(Exception $e) {
+            return redirect()->route('home');
+            exit;
+        }
 
         foreach($users[0] as $user) {
             $userAlreadyExist = User::find($user[0]);
