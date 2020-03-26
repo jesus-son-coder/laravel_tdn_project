@@ -120,3 +120,12 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+
+// Route::get('/employee', 'EmployeeController@index')->name('employee');
+
+Route::resource('/employee', 'EmployeeController');
+
+Route::get('/employee_delete/{id}', 'EmployeeController@destroy')->name('employee');
+
+
