@@ -120,3 +120,7 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+
+Route::get('/import', 'Test\TestController@importFile')->name('importFile');
+Route::post('/import', 'Test\TestController@importExcel')->name('importExcel');

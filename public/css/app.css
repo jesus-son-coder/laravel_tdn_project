@@ -10886,19 +10886,10 @@ a.text-dark:focus {
 
 html,
 body {
-  /* background-color: #fff; */
-  /* background-color: yellow !important; */
-  /* color: #636b6f; */
-  /* background-color: #2d5c74; */
-  color: black;
+  font-size: 16px;
   font-family: "Raleway", sans-serif;
   font-weight: 100;
-  /* height: 100vh; */
-  margin: 0;
-}
-
-body {
-  margin: 50px 0px;
+  height: 100vh;
 }
 
 .full-height {
@@ -11031,5 +11022,45 @@ input[type=text]#input-url {
   /* Microsoft Edge */
   color: black;
   font-weight: 500;
+}
+
+body {
+  margin-top: 40px;
+}
+
+.input-group-excel {
+  margin-bottom: 10px;
+}
+
+.input-group > .custom-file {
+  width: 500px !important;
+  flex: none;
+}
+
+.file-upload-wrapper {
+  padding: 15px;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+
+.notification-bloc {
+  margin-bottom: 10px;
+  border: 1px solid darkgray;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.notification-bloc.notification-bloc-success {
+  background-color: #e6ffbf;
+}
+
+.notification-bloc.notification-bloc-error {
+  background-color: #fbcaca;
+}
+
+.notification-bloc ul {
+  list-style-type: none;
+  margin-bottom: 0px;
 }
 
