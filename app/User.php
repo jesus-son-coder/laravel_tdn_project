@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getTableColumns()
+    {
+        $qry = "SELECT column_name
+                FROM information_schema.columns
+                WHERE table_name = 'users'
+                AND table_schema = 'laravel_tdn'
+                ";
+
+        $result = DB::select($qry);
+        $result = $this->transposeData($result);
+        return $result;
+
+    }
+
+    public function transposeData($data) {
+        $result = array();
+        foreach ($data as $row => $columns) {
+            foreach($columns as $row2 => $column2) {
+                $result[$row2][$row] = $column2;
+            }
+        }
+        return $result;
+    }
+
+    public function getAll()
+    {
+        return collect(DB::select('select * from ' . $this->getTable()));
+    }
+
 }

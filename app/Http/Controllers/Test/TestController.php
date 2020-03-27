@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Test;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Importer;
+use Exporter;
 
 
 class TestController extends Controller
@@ -59,6 +61,36 @@ class TestController extends Controller
             return redirect()->back()
                     ->with(['errors' => $validator->errors()->all()]);
         }
+    }
+
+    public function exportExcel()
+    {
+        $user = new User();
+
+        $columns = $user->getTableColumns();
+
+        $users = $user->getAll();
+
+        $data = new Collection();
+        foreach($columns as $column) {
+            $data[0] = (object) $column;
+        }
+        $data = $data->merge($users);
+
+        $fileName = "Users.xlsx";
+        $saveFile = public_path('/download/' . $fileName);
+
+        $excel = Exporter::make('Excel');
+        $excel->load($data);
+        $excel->save($saveFile);
+
+        $url = url("/download/$fileName");
+
+        $html = '<a href="' . $url . '" id="download" hidden></a>';
+        $html .= "<script>document.getElementById('download').click()</script>";
+
+        return $html;
+
     }
 
 }
