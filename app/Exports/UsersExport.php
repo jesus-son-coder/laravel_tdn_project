@@ -3,12 +3,15 @@
 namespace App\Exports;
 
 use App\User;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class UsersExport implements FromQuery, WithMapping, WithHeadings
+class UsersExport implements FromQuery, WithMapping, WithHeadings, WithColumnFormatting
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -28,18 +31,31 @@ class UsersExport implements FromQuery, WithMapping, WithHeadings
             $user->id,
             'Custom text ' . $user->name,
             $user->email,
+            Date::dateTimeToExcel($user->created_at),
         ];
     }
 
     /**
-     * Ajouter les entêtes des colonnes au fichier à exporter :
+     * Ajouter les entêtes des colonnes du fichier à exporter :
      */
     public function headings():array
     {
         return [
             'Id',
             'Name',
-            'Email'
+            'Email',
+            'Created_at'
+        ];
+    }
+
+    /**
+     * Format Specific Columns
+     */
+    public function columnFormats():array
+    {
+        return [
+            'D' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            //'C' => NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE,
         ];
     }
 
