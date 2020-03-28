@@ -50,6 +50,13 @@ class UsersPerMonthSheet implements FromQuery, WithTitle,  WithHeadings, WithEve
                 $sum = '=SUM(A3:A' . $j . ')';
 
                 $event->sheet->setCellValue($starter, $sum);
+
+
+                // Insérer 3 lignes avant la ligne 7 :
+                $event->sheet->insertNewRowBefore(7, 2);
+
+                // Insérer 2 colonnes avant la colonne A :
+                $event->sheet->insertNewColumnBefore('A', 2);
             },
         ];
     }
