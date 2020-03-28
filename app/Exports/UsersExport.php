@@ -12,6 +12,9 @@ class UsersExport implements FromCollection
     */
     public function collection()
     {
-        return User::all();
+        //return User::all();
+
+        /* Ne sélectionner que certains champs, avec des conditions particulières : */
+        return User::select('id', 'name')->where('id','>',25)->get();
     }
 }
