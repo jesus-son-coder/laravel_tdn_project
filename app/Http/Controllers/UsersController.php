@@ -32,7 +32,7 @@ class UsersController extends Controller
      */
     public function storeFile()
     {
-        Excel::store(new UsersExport(), 'users.csv');
+        Excel::store(new UsersExport(), 'users2.xlsx');
 
         return 'Done';
     }

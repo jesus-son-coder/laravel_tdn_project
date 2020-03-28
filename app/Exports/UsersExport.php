@@ -4,17 +4,16 @@ namespace App\Exports;
 
 use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
 
-class UsersExport implements FromCollection
+class UsersExport implements FromQuery
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function query()
     {
-        //return User::all();
-
         /* Ne sélectionner que certains champs, avec des conditions particulières : */
-        return User::select('id', 'name')->where('id','>',25)->get();
+        return User::select('id', 'name')->where('id','>',25);
     }
 }
