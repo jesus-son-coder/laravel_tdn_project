@@ -8,12 +8,10 @@ use Maatwebsite\Excel\Concerns\Withtitle;
 class UsersPerMonthSheet implements FromQuery, WithTitle
 {
     private $month;
-    private $year;
 
-    public function __construct(int $year, int $month)
+    public function __construct(int $month)
     {
         $this->month = $month;
-        $this->year = $year;
     }
 
     /**
@@ -23,8 +21,7 @@ class UsersPerMonthSheet implements FromQuery, WithTitle
     {
         return User
                 ::query()
-                ->whereYear('created_at', $this->year)
-                ->whereMonth('created_at', $this->month);
+                ->where('id','>', 25);
     }
 
     /**
@@ -32,7 +29,7 @@ class UsersPerMonthSheet implements FromQuery, WithTitle
      */
     public function title(): string
     {
-        return 'Month ' . $this->month;
+        return 'Month '. $this->month;
     }
 
 }

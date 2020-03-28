@@ -14,24 +14,10 @@ use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
+
 class UsersExport implements FromQuery, WithMapping, WithHeadings, WithColumnFormatting, WithMultipleSheets
 {
     use Exportable;
-
-
-    /**
-     * Gérer plusieurs Onglets
-     */
-    public function sheets():array
-    {
-        $sheets = [];
-
-        for ($month = 1; $month < 12; $month++) {
-            $sheets[] = new UsersPerMonthSheet(2020, $month);
-        }
-
-        return $sheets;
-    }
 
 
     /**
@@ -80,6 +66,19 @@ class UsersExport implements FromQuery, WithMapping, WithHeadings, WithColumnFor
         ];
     }
 
+   /**
+     * Gérer plusieurs Onglets
+     */
+    public function sheets():array
+    {
+        $sheets = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $sheets[] = new UsersPerMonthSheet($month);
+        }
+
+        return $sheets;
+    }
 
 
 
