@@ -6,8 +6,9 @@ use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class UsersExport implements FromQuery, WithMapping
+class UsersExport implements FromQuery, WithMapping, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -24,8 +25,21 @@ class UsersExport implements FromQuery, WithMapping
     public function map($user): array
     {
         return [
+            $user->id,
             'Custom text ' . $user->name,
             $user->email,
+        ];
+    }
+
+    /**
+     * Ajouter les entêtes des colonnes au fichier à exporter :
+     */
+    public function headings():array
+    {
+        return [
+            'Id',
+            'Name',
+            'Email'
         ];
     }
 
