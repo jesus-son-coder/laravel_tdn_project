@@ -27,4 +27,15 @@ class UsersController extends Controller
         return Excel::download(new UsersExport(), 'users.xlsx');
     }
 
+    /**
+     * Store the export file in the default folder of the application ("storage/app") :
+     */
+    public function storeFile()
+    {
+        Excel::store(new UsersExport(), 'users.xlsx');
+
+        return 'Done';
+    }
+
+
 }
