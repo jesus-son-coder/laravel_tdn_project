@@ -12,10 +12,12 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class UsersPerMonthSheet implements FromQuery, WithTitle,  WithHeadings, WithEvents
 {
     private $month;
+    private $numberRows;
 
-    public function __construct(int $month)
+    public function __construct(int $month, int $numberRows)
     {
         $this->month = $month;
+        $this->numberRows = $numberRows;
     }
 
 
@@ -31,6 +33,17 @@ class UsersPerMonthSheet implements FromQuery, WithTitle,  WithHeadings, WithEve
             // Handle by a closure :
             AfterSheet::class => function(AfterSheet $event) use ($styleArray) {
                 $event->sheet->getStyle('A1:G1')->applyFromArray($styleArray);
+
+                // Calcul de la position de la ligne où la somme se trouvera dans le tableau
+                $i = $this->numberRows + 2;
+
+                // Récupération dynamique du nombre de lignes à additionner
+                $j = $this->numberRows + 1;
+
+                $starter = 'A' . $i;
+                $sum = '=SUM(A2:A' . $j . ')';
+
+                $event->sheet->setCellValue($starter, $sum);
             },
         ];
     }

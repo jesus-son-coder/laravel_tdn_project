@@ -18,6 +18,15 @@ class UsersExport implements FromQuery, WithMapping, WithHeadings, WithColumnFor
 {
     use Exportable;
 
+    private $numberRows;
+
+
+    public function __construct()
+    {
+        // Calcul la taille de la collection (qui aidera au calcul dynamique du nombre de lignes à traiter )
+        $users = User::where('id','>',25)->get();
+        $this->numberRows = $users->count();
+    }
 
     /**
     * @return \Illuminate\Support\Collection
@@ -73,7 +82,7 @@ class UsersExport implements FromQuery, WithMapping, WithHeadings, WithColumnFor
         $sheets = [];
 
         for ($month = 1; $month <= 12; $month++) {
-            $sheets[] = new UsersPerMonthSheet($month);
+            $sheets[] = new UsersPerMonthSheet($month, $this->numberRows);
         }
 
         return $sheets;
