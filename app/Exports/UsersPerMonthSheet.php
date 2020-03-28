@@ -2,11 +2,12 @@
 namespace App\Exports;
 
 use App\User;
+use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Withtitle;
+use Maatwebsite\Excel\Events\BeforeSheet;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
-use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class UsersPerMonthSheet implements FromQuery, WithTitle,  WithHeadings, WithEvents
@@ -30,18 +31,23 @@ class UsersPerMonthSheet implements FromQuery, WithTitle,  WithHeadings, WithEve
         ];
 
         return [
+
+            BeforeSheet::class => function(BeforeSheet $event) use ($styleArray) {
+                $event->sheet->setCellValue('A1', 'Liste des employés du département');
+            },
+
             // Handle by a closure :
             AfterSheet::class => function(AfterSheet $event) use ($styleArray) {
-                $event->sheet->getStyle('A1:G1')->applyFromArray($styleArray);
+                $event->sheet->getStyle('A1:G2')->applyFromArray($styleArray);
 
                 // Calcul de la position de la ligne où la somme se trouvera dans le tableau
-                $i = $this->numberRows + 2;
+                $i = $this->numberRows + 3;
 
                 // Récupération dynamique du nombre de lignes à additionner
-                $j = $this->numberRows + 1;
+                $j = $this->numberRows + 2;
 
                 $starter = 'A' . $i;
-                $sum = '=SUM(A2:A' . $j . ')';
+                $sum = '=SUM(A3:A' . $j . ')';
 
                 $event->sheet->setCellValue($starter, $sum);
             },
