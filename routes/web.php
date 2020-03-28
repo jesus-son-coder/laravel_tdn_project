@@ -120,3 +120,5 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+Route::get('/download', 'UsersController@export')->name('download');
