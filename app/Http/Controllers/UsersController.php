@@ -32,9 +32,18 @@ class UsersController extends Controller
      */
     public function storeFile()
     {
-        Excel::store(new UsersExport(), 'users2.xlsx');
+        Excel::store(new UsersExport(), 'users.xlsx');
 
         return 'Done';
+    }
+
+    /**
+     * Map data by adding stuff, modifying or and controlling the content to be exported :
+     */
+    public function mapData()
+    {
+        return Excel::download(new UsersExport(), 'users2.xlsx');
+
     }
 
 

@@ -124,3 +124,5 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
 Route::get('/download', 'UsersController@export')->name('download');
 
 Route::get('/store', 'UsersController@storeFile')->name('store');
+
+Route::get('/map', 'UsersController@mapData')->name('map');
