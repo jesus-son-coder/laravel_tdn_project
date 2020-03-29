@@ -125,3 +125,4 @@ Route::get('/import_excel', 'ImportExcelController@index' )->name('importExcelDi
 
 Route::post('/import_excel/import', 'ImportExcelController@import' )->name('importExcelProcessing');
 
+Route::post('/import_excel/regenerate', 'ImportExcelController@regenerate' )->name('importExcelRegenerate');

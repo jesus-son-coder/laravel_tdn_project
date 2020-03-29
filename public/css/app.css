@@ -10898,10 +10898,6 @@ body {
   margin-bottom: 50px;
 }
 
-body {
-  margin: 50px 0px;
-}
-
 .full-height {
   height: 56vh;
 }
@@ -11032,5 +11028,67 @@ input[type=text]#input-url {
   /* Microsoft Edge */
   color: black;
   font-weight: 500;
+}
+
+body {
+  background-color: white;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.input-group-excel {
+  margin-bottom: 10px;
+}
+
+.input-group > .custom-file {
+  width: 500px !important;
+  flex: none;
+}
+
+.file-upload-wrapper {
+  padding: 15px;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+
+.table-wrapper {
+  padding: 15px;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+
+.notification-bloc {
+  margin-bottom: 10px;
+  border: 1px solid darkgray;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.notification-bloc.notification-bloc-success {
+  background-color: #e6ffbf;
+}
+
+.notification-bloc.notification-bloc-error {
+  background-color: #fbcaca;
+}
+
+.notification-bloc ul {
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+
+/*
+#regenerate-file, #upload-file, .btn-import-excel {
+    display: inline-block;
+} */
+
+#upload-file {
+  display: inline;
+}
+
+#regenerate-file,
+.btn-import-excel {
+  display: inline-block;
 }
 

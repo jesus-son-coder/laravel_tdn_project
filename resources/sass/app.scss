@@ -165,3 +165,14 @@ body {
     list-style-type: none;
     margin-bottom: 0px;
 }
+
+/*
+#regenerate-file, #upload-file, .btn-import-excel {
+    display: inline-block;
+} */
+#upload-file {
+    display: inline;
+}
+#regenerate-file, .btn-import-excel {
+    display: inline-block;
+}

@@ -20,7 +20,7 @@
         @endif
 
     <div class="col-md-8 file-upload-wrapper">
-        <form action="{{ url('/import_excel/import') }}" method="POST" enctype="multipart/form-data">
+        <form action="#" method="POST" enctype="multipart/form-data" id="upload-file">
             {{ csrf_field() }}
             <div class="intro-message">
                 <h2>Import Excel File in Laravel</h2>
@@ -34,10 +34,13 @@
                     <label class="custom-file-label btn-import-excelbtn import-excel" for="file">Choisir un fichier</label>
                 </div>
             </div>
-            <input type="submit" name="upload" value="Upload Excel File" class="btn btn-primary btn-import-excel">
+            <input type="button" name="upload" value="Ajouter de nouvelles données" class="btn btn-primary btn-import-excel" id="upload-button">
+            <input type="button" name="regenerate" value="Regénérer les données" class="btn btn-primary btn-import-excel" id="regenerate-button">
+        </form>
+
             <br><br>
         <a href="{{ url('/documents/StudentRegister.xlsx') }}">Download Template Excel</a>
-        </form>
+
     </div>
 
     <br>
@@ -81,7 +84,17 @@
 
     $(document).ready(function() {
 
+        $('#upload-button').click(function(e) {
+            e.preventDefault();
+            $('form').attr('action', "{{ url('/import_excel/import') }}");
+            $('form').submit();
+        });
 
+        $('#regenerate-button').click(function(e) {
+            e.preventDefault();
+            $('form').attr('action', "{{ url('/import_excel/regenerate') }}");
+            $('form').submit();
+        });
 
     })
 

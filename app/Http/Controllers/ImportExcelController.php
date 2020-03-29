@@ -31,7 +31,53 @@ class ImportExcelController extends Controller
             exit;
         }
 
-        foreach($customers[0] as $customer) {
+        foreach($customers[0] as $key => $customer) {
+            // On ne tient pas compte des en-têtes de colonnes :
+            if($key == 0) continue;
+
+            $customer = new Customer([
+                'CustomerName' => $customer[0],
+                'Gender' => $customer[1],
+                'Address' => $customer[2],
+                'City' => $customer[3],
+                'PostalCode' => $customer[4],
+                'Country' => $customer[5],
+            ]);
+
+            $customer->save();
+        }
+
+        return back()->with('success', 'Excel Data Imported successfully.');
+    }
+
+
+    public function regenerate(Request $request)
+    {
+        $this->validate($request, [
+            'select_file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        // Vider la table :
+        // ----------------
+        Customer::truncate();
+        // ou :
+        // DB::table('tbl_customer')->truncate();
+        // ou :
+        /*
+        $customers = Customer::all();
+        $customers->truncate();
+        */
+
+        try {
+            $customers = Excel::toCollection(new CustomersImport(), $request->file('select_file'));
+        } catch(Exception $e) {
+            return redirect()->route('importExcelDisplay');
+            exit;
+        }
+
+        foreach($customers[0] as $key => $customer) {
+            // On ne tient pas compte des en-têtes de colonnes :
+            if($key == 0) continue;
 
             $customer = new Customer([
                 'CustomerName' => $customer[0],
