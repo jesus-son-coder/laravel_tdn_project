@@ -120,3 +120,8 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+Route::get('/import_excel', 'ImportExcelController@index' )->name('importExcelDisplay');
+
+Route::get('/import_excel/import', 'ImportExcelController@import' )->name('importExcelProcessing');
+
