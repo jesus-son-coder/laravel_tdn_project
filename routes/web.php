@@ -120,3 +120,8 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
     return view('url-shortener/index');
 
 });
+
+
+Route::get('/country_state_city', 'DynamicDependantController@index');
+
+Route::post('/dynamic_fetch', 'DynamicDependantController@fetch')->name('dynamicdependant.fetch');
