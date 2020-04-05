@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\AjaxCrud;
+use Illuminate\Http\Request;
+
+use Yajra\DataTables;
+use Yajra\DataTables\Services\DataTable;
 
 class AjaxCrudController extends Controller
 {
@@ -14,7 +17,28 @@ class AjaxCrudController extends Controller
      */
     public function index()
     {
-        //
+        // Si la requête reçue est du type Ajax :
+        if(request()->ajax()) {
+            // Crée une instance de Datatables :
+            return datatables()->of(AjaxCrud::latest()->get())
+                        ->addColumn('action', function($data) {
+                            $button = '<button type="button"
+                                        name="edit" id="' . $data->id . '"
+                                        class="edit btn btn-primary btn-sm">
+                                        Edit</button>';
+                            $button .= '&nbsp;&nbsp;';
+                            $button .= '<button type="button"
+                                        name="delete" id="' . $data->id . '"
+                                        class="delete btn btn-danger btn-sm">
+                                        Delete</button>';
+                            return $button;
+                        })
+                        ->rawColumns(['action'])
+                        ->make(true);
+            ;
+        }
+
+        return view ('ajax-datatables/ajax_index');
     }
 
     /**

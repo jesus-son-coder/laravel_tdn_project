@@ -121,3 +121,4 @@ Route::get('/tdn/url-shortener/{shortened}', function ($shortened) {
 
 });
 
+Route::resource('/ajax-datatables', 'AjaxCrudController');
