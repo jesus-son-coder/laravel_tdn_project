@@ -111,7 +111,10 @@ class AjaxCrudController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(request()->ajax()) {
+            $data = AjaxCrud::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**

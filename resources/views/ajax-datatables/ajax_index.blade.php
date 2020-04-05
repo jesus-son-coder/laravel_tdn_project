@@ -61,6 +61,7 @@
                         </label>
                         <div class="col-md-10">
                             <input type="file" name="image" id="image" class="form-control" />
+                            <div id="store_image"></div>
                         </div>
                     </div>
 
@@ -145,7 +146,30 @@
             }
         });
 
-    })
+        $(document).on('click', '.edit', function(){
+            var id = $(this).attr('id');
+            $('#form_result').html('');
+            $.ajax({
+                url:"/ajax-datatables/" + id + "/edit",
+                dataType:"json",
+                success:function(html) {
+                    $('#first_name').val(html.data.first_name);
+                    $('#last_name').val(html.data.last_name);
+
+                    $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.image + " width='70' class='img-thumbnail' />");
+                    $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.image + "' />");
+
+                    $('#hidden_id').val(html.data.id);
+
+                    $('.modal-title').text("Modifier une Fiche");
+                    $('#action_button').val("Modifier");
+                    $('#action').val("Modifier");
+                    $('#formModal').modal('show');
+                }
+            })
+        });
+
+    });
 
 </script>
 @endsection
