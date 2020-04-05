@@ -144,6 +144,36 @@
                     }
                 })
             }
+
+            if($('#action_button').val() == 'Modifier') {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url:"/ajax-datatables/" + id + "/update",
+                    method:"POST",
+                    data:new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    dataType:"json",
+                    success:function(data) {
+                        var html = '';
+                        if(data.errors) {
+                            html = '<div class="alert alert-danger">';
+                                for(var count = 0; count < data.errors.length; count++) {
+                                    html += '<p>' + data.errors[count] + '</p>';
+                                }
+                                html += '</div>';
+                        }
+                        if(data.success) {
+                            html = '<div class="alert alert-success">' + data.success + '</div>';
+                            $('#creation_form')[0].reset();
+                            $('#store_image').html('');
+                            $('#user_table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                })
+            }
         });
 
         $(document).on('click', '.edit', function(){

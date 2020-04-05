@@ -68,15 +68,15 @@ class AjaxCrudController extends Controller
             'image'         => 'required|image|max:2048'
         );
 
-        $errors = Validator::make($request->all(), $rules);
+        $error = Validator::make($request->all(), $rules);
 
-        if($errors->fails()) {
-            return response()->json(['errors' => $errors->errors()->all()]);
+        if($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
         }
 
         $image = $request->file('image');
 
-        $new_name = rand() . '.' .$image->getClientOriginalExtension();
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
 
         $image->move(public_path('images'), $new_name);
 
@@ -126,7 +126,53 @@ class AjaxCrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $image_name = $request->hidden_image;
+
+        $image = $request->file('image');
+
+        // Image uploaded
+        if($image != '') {
+
+            $rules = array(
+                'first_name'    => 'required',
+                'last_name'     => 'required',
+                'image'         => 'image|max:2048'
+            );
+
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails()) {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+
+            $image_name = rand() . '.' . $image->getClientOriginalExtension();
+
+            $image->move(public_path('images'), $image_name);
+        }
+        else { // No image uploades
+
+            $rules = array(
+                'first_name'    => 'required',
+                'last_name'     => 'required'
+            );
+
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails()) {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+
+        }
+
+        $form_data = array(
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'image'         => $image_name
+        );
+
+        AjaxCrud::whereId($request->hidden_id)->update($form_data);
+
+        return response()->json(['success' => 'Data is successfully updated.']);
     }
 
     /**
