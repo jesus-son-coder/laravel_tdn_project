@@ -11033,3 +11033,7 @@ input[type=text]#input-url {
   font-weight: 500;
 }
 
+#action_button {
+  min-width: 150px;
+}
+

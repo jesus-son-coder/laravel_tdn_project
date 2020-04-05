@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\AjaxCrud;
-use Illuminate\Http\Request;
-
 use Yajra\DataTables;
+
+use Illuminate\Http\Request;
 use Yajra\DataTables\Services\DataTable;
+
+use Illuminate\Support\Facades\Validator;
 
 class AjaxCrudController extends Controller
 {
@@ -59,7 +61,35 @@ class AjaxCrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valider les données reçues du formulaire :
+        $rules = array(
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'image'         => 'required|image|max:2048'
+        );
+
+        $errors = Validator::make($request->all(), $rules);
+
+        if($errors->fails()) {
+            return response()->json(['errors' => $errors->errors()->all()]);
+        }
+
+        $image = $request->file('image');
+
+        $new_name = rand() . '.' .$image->getClientOriginalExtension();
+
+        $image->move(public_path('images'), $new_name);
+
+        $form_data = array(
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'image' => $new_name
+        );
+
+        AjaxCrud::create($form_data);
+
+        return response()->json(['success' => 'Data added successfully.']);
+
     }
 
     /**
