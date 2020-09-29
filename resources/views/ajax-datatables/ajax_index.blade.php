@@ -25,7 +25,7 @@
 
 </div>
 
-{{-- La Modal de Création --}}
+{{-- La Modal de Création ou d'Edition --}}
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -70,6 +70,26 @@
                         <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Ajouter" />
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- La Modal de confirmation de Suppression --}}
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation de suppression</h4>
+                <button  type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p align="center" style="margin:0">Êtes-vous sûrs de vouloir supprimer cette fiche ?</p>
+            </div>
+            <div class="modal-footer">
+                <button  type="button" name="ok_button" id="ok_button" class="btn btn-danger" >OK</button>
+                <button  type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
@@ -197,6 +217,31 @@
                     $('#formModal').modal('show');
                 }
             })
+        });
+
+        var user_id;
+
+        $(document).on('click', '.delete', function() {
+            user_id = $(this).attr('id');
+            $('#ok_button').text('OK');
+            $('#confirmModal').modal('show');
+        });
+
+        $('#ok_button').click(function(e) {
+            e.preventDefault();
+            $('#ok_button').text('Deleting...');
+            setTimeout(function(){
+                $.ajax({
+                    url:"/ajax-datatables/delete/" + user_id,
+                    /*
+                    beforeSend:function(){
+                    }, */
+                    success:function(data){
+                        $('#confirmModal').modal('hide');
+                        $('#user_table').DataTable().ajax.reload();
+                    }
+                });
+            }, 3000);
         });
 
     });

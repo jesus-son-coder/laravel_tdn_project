@@ -183,6 +183,8 @@ class AjaxCrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = AjaxCrud::findOrFail($id);
+
+        $data->delete();
     }
 }
