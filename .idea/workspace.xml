@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d6ce4bf-cc55-4fdc-b259-6811457a093e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +115,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="XML" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../cadeau" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -144,7 +144,7 @@
       <workItem from="1586424368003" duration="112000" />
       <workItem from="1601390533536" duration="230000" />
       <workItem from="1601391202412" duration="2024000" />
-      <workItem from="1601452680625" duration="3399000" />
+      <workItem from="1601452680625" duration="6508000" />
     </task>
     <servers />
   </component>
@@ -156,5 +156,9 @@
       <screen x="1366" y="0" width="1920" height="1040" />
     </state>
     <state x="2106" y="275" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601455190706" />
+    <state x="0" y="0" width="1382" height="796" key="dock-window-1" timestamp="1601478382825">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" width="1382" height="796" key="dock-window-1/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601478382825" />
   </component>
 </project>
