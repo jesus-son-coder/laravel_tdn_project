@@ -37,7 +37,7 @@ class AjaxCrudController extends Controller
                         })
                         ->rawColumns(['action'])
                         ->make(true);
-            ;
+
         }
 
         return view ('ajax-datatables/ajax_index');
