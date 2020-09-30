@@ -46,7 +46,7 @@ class TopicalityController extends Controller
      */
     public function show(Topicality $topicality)
     {
-        //
+        return $topicality;
     }
 
     /**
