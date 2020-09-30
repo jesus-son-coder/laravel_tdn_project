@@ -17,9 +17,12 @@ class TopicalityController extends Controller
     {
         // $topicalities = Topicality::all();
         // Permet d'afficher les ressources dans un ordre decroissant en fonction de la date de création :
-        $topicalities = Topicality::orderByDesc('created_at')->get();
+        // $topicalities = Topicality::orderByDesc('created_at')->get();
+        // return $topicalities->toJson(JSON_PRETTY_PRINT);
 
-        return $topicalities->toJson(JSON_PRETTY_PRINT);
+        // Afficher la liste dezs ressources transformées au préalable :
+        return ResourcesTopicality::collection(Topicality::orderByDesc('created_at')->get());
+
     }
 
     /**
