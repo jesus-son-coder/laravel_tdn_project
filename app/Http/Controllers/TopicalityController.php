@@ -73,6 +73,10 @@ class TopicalityController extends Controller
      */
     public function destroy(Topicality $topicality)
     {
-        //
+        if($topicality->delete()) {
+            return response()->json([
+                'success' => 'Actualité supprimée avec succès'
+            ],200);
+        }
     }
 }
