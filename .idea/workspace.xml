@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8d6ce4bf-cc55-4fdc-b259-6811457a093e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicalityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicalityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Topicality.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Topicality.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +123,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -144,7 +148,7 @@
       <workItem from="1586424368003" duration="112000" />
       <workItem from="1601390533536" duration="230000" />
       <workItem from="1601391202412" duration="2024000" />
-      <workItem from="1601452680625" duration="6508000" />
+      <workItem from="1601452680625" duration="10723000" />
     </task>
     <servers />
   </component>
@@ -156,6 +160,10 @@
       <screen x="1366" y="0" width="1920" height="1040" />
     </state>
     <state x="2106" y="275" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601455190706" />
+    <state x="1827" y="165" key="SettingsEditor" timestamp="1601497354269">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1827" y="165" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601497354269" />
     <state x="0" y="0" width="1382" height="796" key="dock-window-1" timestamp="1601478382825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

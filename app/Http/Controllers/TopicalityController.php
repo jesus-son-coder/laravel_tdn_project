@@ -14,7 +14,11 @@ class TopicalityController extends Controller
      */
     public function index()
     {
-        //
+        // $topicalities = Topicality::all();
+        // Permet d'afficher les ressources dans un ordre decroissant en fonction de la date de création :
+        $topicalities = Topicality::orderByDesc('created_at')->get();
+
+        return $topicalities->toJson(JSON_PRETTY_PRINT);
     }
 
     /**
@@ -25,7 +29,13 @@ class TopicalityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* La fonction "cerate()" est un Mass-Assignment.
+            Du coup, il faudrait le rpéciser dans le Model. */
+        if(Topicality::create($request->all())) {
+            return response()->json([
+                'success' => 'Actualité créée avec succès'
+            ], 200);
+        }
     }
 
     /**
