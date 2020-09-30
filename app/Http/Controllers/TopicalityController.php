@@ -58,7 +58,11 @@ class TopicalityController extends Controller
      */
     public function update(Request $request, Topicality $topicality)
     {
-        //
+        if($topicality->update($request->all())) {
+            return response()->json([
+                'success' => 'Actualité modifiée avec succès'
+            ],200);
+        }
     }
 
     /**

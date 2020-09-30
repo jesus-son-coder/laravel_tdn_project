@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d6ce4bf-cc55-4fdc-b259-6811457a093e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicalityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicalityController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +146,7 @@
       <workItem from="1586424368003" duration="112000" />
       <workItem from="1601390533536" duration="230000" />
       <workItem from="1601391202412" duration="2024000" />
-      <workItem from="1601452680625" duration="10870000" />
+      <workItem from="1601452680625" duration="11413000" />
     </task>
     <servers />
   </component>
@@ -161,6 +162,10 @@
       <screen x="1366" y="0" width="1920" height="1040" />
     </state>
     <state x="1827" y="165" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601497354269" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1601501285143">
+      <screen x="1366" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1601501285143" />
     <state x="0" y="0" width="1382" height="796" key="dock-window-1" timestamp="1601478382825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
