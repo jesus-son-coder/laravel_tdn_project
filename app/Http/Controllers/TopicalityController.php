@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class TopicalityController extends Controller
 {
     /**
+     * @OA\Get(
+     *     path="/api/topicality",
+     *     tags={"Topics"},
+     *     @OA\Response(
+     *          response="200",
+     *          description="Retourne tous les topics"
+     *     )
+     * )
+     *
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,6 +36,23 @@ class TopicalityController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *     path="/api/topicality",
+     *     tags={"Topics"},
+     *     security={ { "Oauth2Password": {} } },
+     *     @OA\Response(
+     *          response="201",
+     *          description="Retourne le topic créé"
+     *     ),
+     *     @OA\RequestBody(
+     *          description="Topic à créer",
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/json"
+     *          )
+     *
+     *     )
+     * )
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

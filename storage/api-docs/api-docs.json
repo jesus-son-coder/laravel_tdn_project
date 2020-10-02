@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Gift-Boxes Order Les Collectionneurs",
+        "description": "Welcome to les Collectionneurs Webservices interface documentation The following documentation has been produced in order to facilitate the integration of our Webservices. This is dedicated to the technical team of our partners who want to be connected to our Hôtels & Restaurants.",
+        "contact": {
+            "email": "support@lescollectionneurs.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:3700",
+            "description": "Serveur"
+        }
+    ],
+    "paths": {
+        "/api/topicality": {
+            "get": {
+                "tags": [
+                    "Topics"
+                ],
+                "operationId": "App\\Http\\Controllers\\TopicalityController::index",
+                "responses": {
+                    "200": {
+                        "description": "Retourne tous les topics"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Topics"
+                ],
+                "operationId": "App\\Http\\Controllers\\TopicalityController::store",
+                "requestBody": {
+                    "description": "Topic à créer",
+                    "required": true,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Retourne le topic créé"
+                    }
+                },
+                "security": [
+                    {
+                        "Oauth2Password": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Oauth2Password": {
+                "type": "oauth2",
+                "description": "Utilisez client_id / client_secret et votre email / password pour obtenir un token",
+                "in": "header",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "/oauth/authorize",
+                        "tokenUrl": "/oauth/token",
+                        "refreshUrl": "/oauth/token/refresh",
+                        "scopes": {}
+                    }
+                },
+                "scheme": "bearer"
+            }
+        }
+    }
+}
