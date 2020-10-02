@@ -24,6 +24,9 @@ Route::get('list','Users@list');
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
+Route::post('product', 'API\Products@save');
+
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
 });
+
