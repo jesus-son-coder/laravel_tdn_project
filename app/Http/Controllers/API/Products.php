@@ -15,6 +15,9 @@ class Products extends Controller
         $product->name = $request->name;
         $product->category = $request->category;
         $product->price = $request->price;
-        echo $product->save();
+        if( $product->save()) {
+            return ['Result' => "Product has been successfully saved"];
+        }
+        return ['Result' => "An error occurred..."];
     }
 }
