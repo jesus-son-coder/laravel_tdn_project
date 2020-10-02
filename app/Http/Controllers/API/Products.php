@@ -20,4 +20,23 @@ class Products extends Controller
         }
         return ['Result' => "An error occurred..."];
     }
+
+    public function update(Request $request)
+    {
+        $product = Product::find($request->id);
+        if(isset($request->name)) {
+            $product->name =  $request->name;
+        }
+        if(isset($request->category)) {
+            $product->category =  $request->category;
+        }
+        if(isset($request->price)) {
+            $product->price =  $request->price;
+        }
+
+        if( $product->save()) {
+            return ['Result' => "Product has been successfully updated"];
+        }
+        return ['Result' => "An error occurred..."];
+    }
 }

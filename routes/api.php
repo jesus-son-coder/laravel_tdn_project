@@ -23,6 +23,7 @@ Route::get('list','Users@list');
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+Route::put('product', 'API\Products@update');
 
 
 Route::group(['middleware' => 'auth:api'], function(){
